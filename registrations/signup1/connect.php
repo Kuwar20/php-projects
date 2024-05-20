@@ -15,10 +15,7 @@
     $con = mysqli_connect($HOSTNAME, $USERNAME, $PASSWORD, $DBNAME, $PORT);
 
     // Check connection
-    if($con){
-        echo "Connection Successful.";
-    }
-    else{
+    if(!$con){
         die(mysqli_error($con));    
     }
 ?>

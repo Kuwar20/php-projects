@@ -1,16 +1,32 @@
 <?php
+
+  $user=0;
+  $success=0;
+
   if($_SERVER['REQUEST_METHOD']=='POST'){
     include 'connect.php';
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $sql = "INSERT INTO `registration` (`username`, `password`) VALUES ('$username', '$password')";
+    $sql = "SELECT * FROM `registration` WHERE username='$username' AND password='$password'";
+    
     $result = mysqli_query($con, $sql);
-
+    
     if($result){
-      echo "The record has been inserted successfully!<br>";
-    }else{
-      die(mysqli_error($con));
+      $num = mysqli_num_rows($result);
+      if($num > 0){
+        //echo "User already exists<br>";
+        $user=1;
+      }else{
+        $sql = "INSERT INTO `registration` (`username`, `password`) VALUES ('$username', '$password')";
+        $result = mysqli_query($con, $sql);
+        if($result){
+          // echo "The record has been inserted successfully!<br>";
+          $success=1;
+        }else{
+          die(mysqli_error($con));
+        }
+      }
     }
   }
 ?>
@@ -25,7 +41,23 @@
   </head>
         
   <body>
+  <?php
+    if($user){
+      echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Error!</strong> User already exists.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> 
+      </div>';}
+  ?>
+    <?php
+      if($success){
+      echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Success</strong> You are successfuly signed up.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> 
+      </div>';}
+  ?>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
     <h1 class="text-center">Sign up Page</h1>
     <div class="container mt-5">
     <form action="sign.php" method="post">
@@ -41,4 +73,5 @@
 </form>
     </div>
 </body>
+
 </html>
