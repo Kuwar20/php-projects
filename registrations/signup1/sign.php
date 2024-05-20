@@ -1,5 +1,19 @@
+<?php
+  if($_SERVER['REQUEST_METHOD']=='POST'){
+    include 'connect.php';
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
+    $sql = "INSERT INTO `registration` (`username`, `password`) VALUES ('$username', '$password')";
+    $result = mysqli_query($con, $sql);
 
+    if($result){
+      echo "The record has been inserted successfully!<br>";
+    }else{
+      die(mysqli_error($con));
+    }
+  }
+?>
 
 <!doctype html>
 <html lang="en">
@@ -14,10 +28,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <h1 class="text-center">Sign up Page</h1>
     <div class="container mt-5">
-    <form>
+    <form action="sign.php" method="post">
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" name="username" aria-describedby="emailHelp" placeholder="Enter your Email">
+    <label for="exampleInputEmail1" class="form-label">Name</label>
+    <input type="text" class="form-control" name="username" aria-describedby="emailHelp" placeholder="Enter your Name">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
