@@ -19,7 +19,7 @@
             echo $_SESSION['username'];
         ?></h1>
         <div class="container">
-            <a href="logout.php">Logout</a>
+            <a href="logout.php" class="btn btn-primary mt-5">Logout</a>
         </div>
     </body>
 </html>
