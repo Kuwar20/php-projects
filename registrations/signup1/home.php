@@ -18,5 +18,8 @@
         <?php
             echo $_SESSION['username'];
         ?></h1>
+        <div class="container">
+            <a href="logout.php">Logout</a>
+        </div>
     </body>
 </html>
