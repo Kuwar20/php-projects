@@ -20,5 +20,18 @@
             <button type="button">REGISTER</button>
         </div>
     </header>
+    <div class="popup-container">
+        <div class="popup">
+            <form>
+                <h2>
+                    <span>USER LOGIN</span>
+                    <button type="reset">X</button>
+                </h2>
+                <input type="text" placeholder="Email or username">
+                <input type="password" placeholder="Password">
+                <button type="submit">LOGIN</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
