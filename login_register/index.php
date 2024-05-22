@@ -33,5 +33,21 @@
             </form>
         </div>
     </div>
+    <div class="popup-container">
+        <div class="register popup">
+            <form>
+                <h2>
+                    <span>USER REGISTER</span>
+                    <button type="reset">X</button>
+                </h2>
+                <input type="text" placeholder="Full Name">
+                <input type="text" placeholder="Username">
+                <input type="email" placeholder="Email">
+                
+                <input type="password" placeholder="Password">
+                <button type="submit" class="register-btn">REGISTER</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
