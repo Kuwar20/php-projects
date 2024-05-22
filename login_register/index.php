@@ -29,7 +29,7 @@
                 </h2>
                 <input type="text" placeholder="Email or username">
                 <input type="password" placeholder="Password">
-                <button type="submit">LOGIN</button>
+                <button type="submit" class="login-btn">LOGIN</button>
             </form>
         </div>
     </div>
