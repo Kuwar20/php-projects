@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: poppins;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    background-color: #30475e;
+    color: white;
+    padding: 10px 0;
+}
+
+header nav a{
+    color: white;
+    margin-right: 30px;
+    font-weight: 30px ;
+}
+
+header div.sign-in-up button{
+    background-color: #75cfb8;
+    font-size: 16px;
+    font-weight: 550;
+    padding: 4px 12px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    margin-left: 20px;
+}
+
+header div.sign-in-up button:last-child{
+    background-color: #ff6b6b;
+}
