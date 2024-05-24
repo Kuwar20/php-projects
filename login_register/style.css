@@ -50,6 +50,7 @@ div.popup-container{
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    display: none;
 }
 
 div.popup-container div.popup{
