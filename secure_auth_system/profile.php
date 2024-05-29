@@ -2,6 +2,10 @@
     session_start();
     require_once 'utils.php';
 
+    if(!Utils::isLoggedIn()){
+        Utils::redirect('projects/secure_auth_system/index.php');
+    }
+
     $user = null;
     if(isset($_SESSION['user'])){
         $user = $_SESSION['user'];
