@@ -56,7 +56,43 @@ require_once 'database.php';
             unset($_SESSION['user']);
             Utils::redirect('projects/secure_auth_system/index.php');
         }
-    }
+
+        // handle forgot password
+        public function forgotPassword($email){
+            $email = Utils::sanitize($email);
+            $user = $this->db->emailExists($email);
+
+            if($user){
+                $token = bin2hex(random_bytes(50));
+                $this->db->saveToken($email, $token);
+                $link = BASE_URL. '/projects/secure_auth_system/reset.php?email='.$email.'&token='.$token;
+                $message = '<p>Hello '.$user['name']. '</p> <p>Please click on the following link to reset your password: </p> <p><a href="'.$link.'">' .$link. '</a></p>';
+
+                $mailData = [
+
+                        "api_key" => "api-E5794DAC4ED54CEAAF1E59F9DAD39EE8",
+                        "to" => [$email],
+                        "sender" => "Kuwar Singh PHP Project <cakrob@uf.edu.pl>",
+                        "subject" => "Reset Password - Secure Auth System",
+                        "text_body" => "Reset your password",
+                        "html_body" => $message
+            
+                ];
+                if(Utils::sendMail($mailData)){
+                    Utils::setFlash('forgot_success', 'Password reset link has been sent to your email');
+                    Utils::redirect('projects/secure_auth_system/forgot.php');
+                }
+                else{
+                        Utils::setFlash('forgot_error', 'Something went wrong');
+                        Utils::redirect('projects/secure_auth_system/forgot.php');
+                        }
+                }else{
+                    Utils::setFlash('forgot_error', 'Email does not exist');
+                    Utils::redirect('projects/secure_auth_system/forgot.php');
+                }
+}
+}
+
 
     $authSystem = new AuthSystem();
 

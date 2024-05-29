@@ -52,6 +52,14 @@ class Database{
             return false;
         }
     }
+
+    // method to set a token for password reset
+    public function setToken($email, $token){
+        $sql = "UPDATE users SET token = :token WHERE email = :email";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['token' => $token, 'email' => $email]);
+        return true;
+    }
 }
 
 ?>
