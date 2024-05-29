@@ -34,6 +34,22 @@ require_once 'database.php';
                 }
             }
         }
+        
+        public function loginUser($email, $password){
+            $email = Utils::sanitize($email);
+            $password = Utils::sanitize($password);
+    
+            $user = $this->db->login($email, $password);
+            
+            if($user){
+                unset($user['password']);
+                $_SESSION['user'] = $user;
+                Utils::redirect('projects/secure_auth_system/profile.php');
+            }else{
+                Utils::setFlash('login_error', 'Invalid credentials');
+                Utils::redirect('projects/secure_auth_system/index.php');
+            }
+        }
     }
 
     $authSystem = new AuthSystem();
@@ -46,5 +62,7 @@ require_once 'database.php';
         // $password = $_POST['password'];
         // $confirm_password = $_POST['confirm_password'];
         // $authSystem->registerUser($name, $email, $password, $confirm_password);
+    } elseif(isset($_POST['login'])){
+        $authSystem->loginUser($_POST['email'], $_POST['password']);
     }
 ?>
