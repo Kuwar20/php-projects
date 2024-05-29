@@ -50,6 +50,12 @@ require_once 'database.php';
                 Utils::redirect('projects/secure_auth_system/index.php');
             }
         }
+
+        // handle logout
+        public function logoutUser(){
+            unset($_SESSION['user']);
+            Utils::redirect('projects/secure_auth_system/index.php');
+        }
     }
 
     $authSystem = new AuthSystem();
@@ -64,5 +70,7 @@ require_once 'database.php';
         // $authSystem->registerUser($name, $email, $password, $confirm_password);
     } elseif(isset($_POST['login'])){
         $authSystem->loginUser($_POST['email'], $_POST['password']);
+    } elseif(isset($_GET['logout'])){
+        $authSystem->logoutUser();
     }
 ?>
