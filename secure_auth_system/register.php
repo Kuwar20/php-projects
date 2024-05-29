@@ -37,7 +37,7 @@
                 <div class="mb-3 d-grid">
                   <button type="submit" value="Register" class="btn btn-primary">Register</button>
                 </div>
-                <p class="text-center">Already have an account? <a href="/">Login</a></p>
+                <p class="text-center">Already have an account? <a href="index.php">Login</a></p>
               </form>
             </div>
           </div>

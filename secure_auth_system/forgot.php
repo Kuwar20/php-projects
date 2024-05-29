@@ -25,7 +25,7 @@
                 <div class="mb-3 d-grid">
                     <input type="submit" value='Send Reset Link' class='btn btn-primary'>
                 </div>
-                <p class="text-center">Go back to Login Page? <a href="/">Login</a></p>
+                <p class="text-center">Go back to Login Page? <a href="index.php">Login</a></p>
               </form>
             </div>
           </div>

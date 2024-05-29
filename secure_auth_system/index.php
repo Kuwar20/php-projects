@@ -30,9 +30,9 @@
                     <a href="forgot.php">Forgot Password?</a>
                 </div>
                 <div class="mb-3 d-grid">
-                  <button type="submit" value="Login" class="btn btn-primary">Register</button>
+                  <button type="submit" value="Login" class="btn btn-primary">Login</button>
                 </div>
-                <p class="text-center">Don't have an account? <a href="/register.php">Register</a></p>
+                <p class="text-center">Don't have an account? <a href="register.php">Register</a></p>
               </form>
             </div>
           </div>
