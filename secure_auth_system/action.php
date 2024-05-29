@@ -22,12 +22,12 @@ require_once 'database.php';
             }
             if($password != $confirm_password){
                 Utils::setFlash('password_error', 'Password do not match');
-                Utils::redirect('register.php');
+                Utils::redirect('projects/secure_auth_system/register.php');
             } else{
                 $user = $this->db->emailExists($email);
                 if($user){
                     Utils::setFlash('error', 'Email already exists');
-                    Utils::redirect('register.php');
+                    Utils::redirect('projects/secure_auth_system/register.php');
                 } else{
                     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                     $this->db->register($name, $email, $hashed_password);
