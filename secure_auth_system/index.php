@@ -23,7 +23,7 @@
               <?php
               // this register_success is the key of the flash message in action.php
                 echo Utils::displayFlash('register_success','success');
-
+                echo Utils::displayFlash('login_error','danger');
               ?>
               <form action="action.php" method="POST">
                 <input type="hidden" name="login" value="1">
