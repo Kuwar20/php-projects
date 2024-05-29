@@ -25,7 +25,7 @@ class Utils {
         $_SESSION[$name] = $message;
     }
     // Message to display flash message
-    public static function displayFlash($name){
+    public static function displayFlash($name, $type){
         if(isset($_SESSION[$name])){
             echo '<div class="alert alert-'. $type .'">' . $_SESSION[$name] . '</div>';
             unset($_SESSION[$name]);

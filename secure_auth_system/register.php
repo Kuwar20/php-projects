@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    require_once 'utils.php';
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,6 +20,9 @@
               <h1 class='fw-bold text-secondary'>Register</h1>
             </div>
             <div class="card-body p-5">
+              <?php
+                echo Utils::displayFlash('error','danger');
+              ?> 
               <form action="action.php" method="POST">
                 <input type="hidden" name="register" value="1">
                 

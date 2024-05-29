@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    require_once 'utils.php';
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,6 +20,11 @@
               <h1 class='fw-bold text-secondary'>Login</h1>
             </div>
             <div class="card-body p-5">
+              <?php
+              // this register_success is the key of the flash message in action.php
+                echo Utils::displayFlash('register_success','success');
+
+              ?>
               <form action="action.php" method="POST">
                 <input type="hidden" name="login" value="1">
                 

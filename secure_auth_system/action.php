@@ -1,4 +1,5 @@
 <?php
+
 require_once 'utils.php';
 require_once 'database.php';
 
@@ -17,9 +18,6 @@ require_once 'database.php';
             $password = Utils::sanitize($password);
             $confirm_password = Utils::sanitize($confirm_password);
 
-            if(empty($name) || empty($email) || empty($password) || empty($confirm_password)){
-                Utils::setFlash('error', 'All fields are required');
-            }
             if($password != $confirm_password){
                 Utils::setFlash('password_error', 'Password do not match');
                 Utils::redirect('projects/secure_auth_system/register.php');
@@ -31,7 +29,7 @@ require_once 'database.php';
                 } else{
                     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                     $this->db->register($name, $email, $hashed_password);
-                    Utils::setFlash('success', 'You are now registered and can log in');
+                    Utils::setFlash('register_success', 'You are now registered and can log in');
                     Utils::redirect('projects/secure_auth_system/index.php');
                 }
             }
