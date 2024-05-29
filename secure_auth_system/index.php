@@ -1,6 +1,10 @@
 <?php
     session_start();
     require_once 'utils.php';
+
+    if(Utils::isLoggedIn()){
+        Utils::redirect('projects/secure_auth_system/profile.php');
+    }
 ?>
 
 <!doctype html>
