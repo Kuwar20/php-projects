@@ -11,7 +11,7 @@
       <div class="row min-vh-100 justify-content-center align-items-center">
         <div class="col-md-6">
           <div class="card shadow">
-            <div class="card-header">
+            <div class="card-header text-center">
               <h1 class='fw-bold text-secondary'>Register</h1>
             </div>
             <div class="card-body p-5">
