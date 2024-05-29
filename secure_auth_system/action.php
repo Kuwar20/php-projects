@@ -91,6 +91,28 @@ require_once 'database.php';
                     Utils::redirect('projects/secure_auth_system/forgot.php');
                 }
 }
+    // handle reset password
+    public function resetPassword($token, $password, $confirm_password){
+        $token = Utils::sanitize($token);
+        $password = Utils::sanitize($password);
+        $confirm_password = Utils::sanitize($confirm_password);
+
+        if($password != $confirm_password){
+            Utils::setFlash('reset_error', 'Password do not match');
+            Utils::redirect('projects/secure_auth_system/reset.php?token='.$token);
+        }else{
+            $user = $this->db->getUserByToken($token);
+            if($user){
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                $this->db->updatePassword($user['email'], $hashed_password);
+                Utils::setFlash('reset_success', 'Password reset successful');
+                Utils::redirect('projects/secure_auth_system/index.php');
+        }else{
+            Utils::setFlash('reset_error', 'Invalid token');
+            Utils::redirect('projects/secure_auth_system/reset.php?token='.$token);
+        }
+    }
+    }
 }
 
 
@@ -110,5 +132,7 @@ require_once 'database.php';
         $authSystem->logoutUser();
     } elseif(isset($_POST['forgot'])){
         $authSystem->forgotPassword($_POST['email']);
+    } elseif(isset($_POST['reset'])){
+        $authSystem->resetPassword($_POST['token'], $_POST['password'], $_POST['confirm_password']);
     }
 ?>

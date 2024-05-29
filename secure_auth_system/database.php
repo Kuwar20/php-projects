@@ -60,6 +60,22 @@ class Database{
         $stmt->execute(['token' => $token, 'email' => $email]);
         return true;
     }
+    
+    // method to update password
+    public function updatePassword($email, $password){
+        $sql = "UPDATE users SET password = :password, token = :token WHERE email = :email";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['password' => $password, 'token' => null, 'email' => $email]);
+        return true;
+    }
+
+    public function getUserByToken($token){
+        $sql = "SELECT * FROM users WHERE token = :token";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['token' => $token]);
+        $user = $stmt->fetch();
+        return $user;
+    }
 }
 
 ?>
