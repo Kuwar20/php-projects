@@ -34,6 +34,24 @@ class Database{
         $user = $stmt->fetch();
         return $user;
     }
+
+    // method to login an user
+    public function login($email, $password){
+        $sql = "SELECT * FROM users WHERE email = :email";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['email' => $email]);
+        $user = $stmt->fetch();
+
+        if($user){
+            if(password_verify($password, $user['password'])){
+                return $user;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
 }
 
 ?>
