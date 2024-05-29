@@ -41,7 +41,7 @@ class Utils {
     }
 
     // method to send email
-    public static function sendEmail($message){
+    public static function sendmail($message){
         
     $curl = curl_init();
 

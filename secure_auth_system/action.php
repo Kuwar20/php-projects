@@ -64,7 +64,7 @@ require_once 'database.php';
 
             if($user){
                 $token = bin2hex(random_bytes(50));
-                $this->db->saveToken($email, $token);
+                $this->db->setToken($email, $token);
                 $link = BASE_URL. '/projects/secure_auth_system/reset.php?email='.$email.'&token='.$token;
                 $message = '<p>Hello '.$user['name']. '</p> <p>Please click on the following link to reset your password: </p> <p><a href="'.$link.'">' .$link. '</a></p>';
 
@@ -108,5 +108,7 @@ require_once 'database.php';
         $authSystem->loginUser($_POST['email'], $_POST['password']);
     } elseif(isset($_GET['logout'])){
         $authSystem->logoutUser();
+    } elseif(isset($_POST['forgot'])){
+        $authSystem->forgotPassword($_POST['email']);
     }
 ?>

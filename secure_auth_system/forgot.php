@@ -1,3 +1,12 @@
+<?php
+  session_start();
+
+  require_once 'utils.php';
+  if(Utils::isLoggedIn()) {
+    Utils::redirect('projects/secure_auth_system/profile.php');
+  }
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,6 +24,10 @@
               <h1 class='fw-bold text-secondary'>Forgot Password</h1>
             </div>
             <div class="card-body p-5">
+              <?php
+                echo Utils::displayFlash('forgot_error','danger');
+                echo Utils::displayFlash('forgot_success','success');
+              ?>
               <form action="action.php" method="POST">
                 <input type="hidden" name="forgot" value="1">
                 
