@@ -76,6 +76,17 @@ class Database{
         $user = $stmt->fetch();
         return $user;
     }
+
+    public function updateUserProfile($currentEmail, $name, $newEmail) {
+        $sql = "UPDATE users SET name = :name, email = :email WHERE email = :currentEmail";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'name' => $name,
+            'email' => $newEmail,
+            'currentEmail' => $currentEmail
+        ]);
+    }
+    
 }
 
 ?>

@@ -113,6 +113,30 @@ require_once 'database.php';
         }
     }
     }
+
+    public function updateUserProfile($name, $email) {
+        $name = Utils::sanitize($name);
+        $email = Utils::sanitize($email);
+
+        $currentUser = $_SESSION['user'];
+        $currentEmail = $currentUser['email'];
+
+        // Check if the email is changing and if the new email already exists
+        if ($email !== $currentEmail && $this->db->emailExists($email)) {
+            Utils::setFlash('profile_update_error', 'Email already exists');
+            Utils::redirect('projects/secure_auth_system/profile.php');
+        } else {
+            // Update the user's name and email in the database
+            $this->db->updateUserProfile($currentEmail, $name, $email);
+
+            // Update the session user data
+            $_SESSION['user']['name'] = $name;
+            $_SESSION['user']['email'] = $email;
+
+            Utils::setFlash('profile_update_success', 'Profile updated successfully');
+            Utils::redirect('projects/secure_auth_system/profile.php');
+        }
+    }
 }
 
 
@@ -134,5 +158,9 @@ require_once 'database.php';
         $authSystem->forgotPassword($_POST['email']);
     } elseif(isset($_POST['reset'])){
         $authSystem->resetPassword($_POST['token'], $_POST['password'], $_POST['confirm_password']);
-    }
+    } elseif (isset($_POST['update_profile'])) {
+        $authSystem->updateUserProfile($_POST['name'], $_POST['email']);
+    } elseif (isset($_POST['update_profile'])) {
+    $authSystem->updateUserProfile($_POST['name'], $_POST['email']);
+}
 ?>

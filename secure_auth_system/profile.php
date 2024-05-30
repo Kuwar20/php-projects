@@ -49,6 +49,7 @@
                 </table>
             </div>
             <div class="card-footer px-5 text-end">
+                <a href="edit_profile.php" class="btn btn-primary">Edit Profile</a>
                 <a href="action.php?logout=1" class="btn btn-danger">Logout</a>
             </div>
           </div>
