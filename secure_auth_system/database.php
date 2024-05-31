@@ -86,6 +86,12 @@ class Database{
             'currentEmail' => $currentEmail
         ]);
     }
+
+    public function deleteUser($email) {
+        $sql = "DELETE FROM users WHERE email = :email";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['email' => $email]);
+    }
     
 }
 

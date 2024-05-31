@@ -29,6 +29,10 @@
               <h1 class='fw-bold text-secondary'>User Profile</h1>
             </div>
             <div class="card-body p-5">
+                <?php
+                    echo Utils::displayFlash('profile_update_success','success');
+                    echo Utils::displayFlash('profile_update_error','danger');
+                ?>
                 <table class='table table-striped table-bordered'>
                     <tr>
                         <th>Name</th>
@@ -49,8 +53,9 @@
                 </table>
             </div>
             <div class="card-footer px-5 text-end">
-                <a href="edit_profile.php" class="btn btn-primary">Edit Profile</a>
-                <a href="action.php?logout=1" class="btn btn-danger">Logout</a>
+                <a href="edit_profile.php" class="btn btn-secondary">Edit Profile</a>
+                <a href="action.php?logout=1" class="btn btn-primary">Logout</a>
+                <a href="action.php?delete_user=1" class="btn btn-danger">Delete User</a>
             </div>
           </div>
         </div>

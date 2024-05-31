@@ -29,7 +29,7 @@
                 echo Utils::displayFlash('register_success','success');
                 echo Utils::displayFlash('login_error','danger');
                 echo Utils::displayFlash('reset_success','success');
-
+                echo Utils::displayFlash('delete_user_success','success');
               ?>
               <form action="action.php" method="POST">
                 <input type="hidden" name="login" value="1">

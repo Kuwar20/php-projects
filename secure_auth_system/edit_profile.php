@@ -27,10 +27,6 @@ $user = $_SESSION['user'];
                     <h1 class='fw-bold text-secondary'>Edit Profile</h1>
                 </div>
                 <div class="card-body p-5">
-                    <?php
-                    echo Utils::displayFlash('profile_update_success', 'success');
-                    echo Utils::displayFlash('profile_update_error', 'danger');
-                    ?>
                     <form action="action.php" method="POST">
                         <input type="hidden" name="update_profile" value="1">
                         <div class="mb-3">

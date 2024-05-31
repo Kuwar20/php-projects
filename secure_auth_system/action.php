@@ -137,6 +137,16 @@ require_once 'database.php';
             Utils::redirect('projects/secure_auth_system/profile.php');
         }
     }
+
+    public function deleteUser($email) {
+        $email = Utils::sanitize($email);
+
+        $this->db->deleteUser($email);
+
+        unset($_SESSION['user']);
+        Utils::setFlash('delete_user_success', 'User deleted successfully');
+        Utils::redirect('projects/secure_auth_system/index.php');
+    }
 }
 
 
@@ -162,5 +172,7 @@ require_once 'database.php';
         $authSystem->updateUserProfile($_POST['name'], $_POST['email']);
     } elseif (isset($_POST['update_profile'])) {
     $authSystem->updateUserProfile($_POST['name'], $_POST['email']);
+    }elseif (isset($_GET['delete_user'])) {
+    $authSystem->deleteUser($_SESSION['user']['email']);
 }
 ?>
