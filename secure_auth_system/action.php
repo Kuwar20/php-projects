@@ -27,6 +27,8 @@ require_once 'database.php';
                     Utils::setFlash('error', 'Email already exists');
                     Utils::redirect('projects/secure_auth_system/register.php');
                 } else{
+                    // Hash the password before saving to the database during registration
+                    // This hashed password will be verified during login, code for that is in Database file login method
                     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                     $this->db->register($name, $email, $hashed_password);
                     Utils::setFlash('register_success', 'You are now registered and can log in');
