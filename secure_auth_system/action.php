@@ -170,9 +170,7 @@ require_once 'database.php';
         $authSystem->resetPassword($_POST['token'], $_POST['password'], $_POST['confirm_password']);
     } elseif (isset($_POST['update_profile'])) {
         $authSystem->updateUserProfile($_POST['name'], $_POST['email']);
-    } elseif (isset($_POST['update_profile'])) {
-    $authSystem->updateUserProfile($_POST['name'], $_POST['email']);
-    }elseif (isset($_GET['delete_user'])) {
+    } elseif (isset($_GET['delete_user'])) {
     $authSystem->deleteUser($_SESSION['user']['email']);
 }
 ?>
