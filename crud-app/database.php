@@ -22,6 +22,14 @@
             $stmt->execute(['fname'=>$fname,'lname'=>$lname,'email'=>$email,'phone'=>$phone]);
             return true;
         }
+
+        public function read(){
+            $sql = 'SELECT * FROM users ORDER BY id DESC';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            return $result;
+        }
     }
     // $DbObj = new Database; // commented statement are helpful for checking if the db connection is successful or not
 ?>

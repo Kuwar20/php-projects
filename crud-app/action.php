@@ -20,5 +20,29 @@
             echo $util->showMessage('danger','Failed to Add User');
         }
     }
-
+    // Handle fetch all users ajax request
+    if(isset($_GET['fetch'])){
+        $users = $db->read();
+        $output = '';
+        if($users){
+            foreach($users as $row){
+                $output .= '
+                    <tr>
+                        <td>'.$row['id'].'</td>
+                        <td>'.$row['first_name'].'</td>
+                        <td>'.$row['last_name'].'</td>
+                        <td>'.$row['email'].'</td>
+                        <td>'.$row['phone'].'</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary edit" data-id="'.$row['id'].'">Edit</button>
+                            <button class="btn btn-sm btn-danger delete" data-id="'.$row['id'].'">Delete</button>
+                        </td>
+                    </tr>
+                ';
+            }
+            echo $output;
+        }else{
+            echo '<tr><td colspan="6">No Users Found</td></tr>';
+        }
+    }
 ?>

@@ -86,17 +86,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Kuwar</td>
-                                <td>Singh</td>
-                                <td>kuwarx1@gmail.com</td>
-                                <td>1234567890</td>
-                                <td>
-                                    <a href="#" class="btn btn-success btn-sm rounded-pill py-0">Edit</a>
-                                    <a href="#" class="btn btn-danger btn-sm rounded-pill py-0">Delete</a>
-                                </td>
-                            </tr>
                 </div>
             </div>
         </div>
