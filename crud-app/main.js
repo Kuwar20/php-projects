@@ -1,5 +1,6 @@
 const addForm = document.getElementById("add-user-form");
 const showAlert = document.getElementById("showAlert");
+const addModal = new bootstrap.Modal(document.getElementById('addNewUserModel'));
 // Add new User Ajax Request
 
 addForm.addEventListener("submit", async (e) => {
@@ -25,5 +26,6 @@ addForm.addEventListener("submit", async (e) => {
         document.getElementById("add-user-btn").value='Add User';
         addForm.reset();
         addForm.classList.remove("was-validated");
+        addModal.hide();
     }
 });
