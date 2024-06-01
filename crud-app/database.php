@@ -15,6 +15,13 @@
                 die('Connection Error: '.$e->getMessage());
             }
         }
+
+        public function insert($fname,$lname,$email,$phone){
+            $sql = 'INSERT INTO users (first_name,last_name,email,phone) VALUES (:fname,:lname,:email,:phone)';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['fname'=>$fname,'lname'=>$lname,'email'=>$email,'phone'=>$phone]);
+            return true;
+        }
     }
     // $DbObj = new Database; // commented statement are helpful for checking if the db connection is successful or not
 ?>
