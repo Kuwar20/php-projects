@@ -29,6 +29,7 @@ addForm.addEventListener("submit", async (e) => {
         addForm.reset();
         addForm.classList.remove("was-validated");
         addModal.hide();
+        fetchUsers();
     }
 });
 
