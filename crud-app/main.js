@@ -15,11 +15,10 @@ addForm.addEventListener("submit", async (e) => {
     }else{
         document.getElementById("add-user-btn").value='Please Wait...';
 
-        const data = await fetch('actions.php',{
+        const data = await fetch('action.php',{
             method: 'POST',
             body: formData
         }).then(res => res.json());
-        
         const response = await data.text();
         console.log(response);
 
