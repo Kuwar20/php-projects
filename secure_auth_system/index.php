@@ -2,6 +2,54 @@
     session_start();
     require_once 'utils.php';
 
+      // Define valid routes
+    $validRoutes = [
+      '/projects/secure_auth_system/',
+      '/projects/secure_auth_system/index.php',
+      '/projects/secure_auth_system/profile.php',
+      '/projects/secure_auth_system/edit_profile.php',
+      '/projects/secure_auth_system/action.php',
+      '/projects/secure_auth_system/register.php',
+      '/projects/secure_auth_system/reset_password.php',
+    ];
+
+  // Get the current URI
+    $currentUri = $_SERVER['REQUEST_URI'];
+
+    // Check if the current URI is in the list of valid routes
+    if (!in_array($currentUri, $validRoutes)) {
+      // Redirect to the page if the route is invalid
+      require_once '404.php';
+      exit();
+    }
+
+    // Include the requested page
+    switch ($currentUri) {
+      case '/projects/secure_auth_system/':
+      case '/projects/secure_auth_system/index.php':
+          require_once 'index.php';
+          break;
+      case '/projects/secure_auth_system/profile.php':
+          require_once 'profile.php';
+          break;
+      case '/projects/secure_auth_system/edit_profile.php':
+          require_once 'edit_profile.php';
+          break;
+      case '/projects/secure_auth_system/action.php':
+          require_once 'action.php';
+          break;
+      case '/projects/secure_auth_system/register.php':
+          require_once 'register.php';
+          break;
+      case '/projects/secure_auth_system/reset_password.php':
+          require_once 'reset_password.php';
+          break;
+      default:
+          // Redirect to home page if the route is not recognized
+          header('Location: /projects/secure_auth_system/index.php');
+          exit();
+  }
+
     if(Utils::isLoggedIn()){
         Utils::redirect('projects/secure_auth_system/profile.php');
     }
