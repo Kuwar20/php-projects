@@ -11,6 +11,7 @@
       '/projects/secure_auth_system/action.php',
       '/projects/secure_auth_system/register.php',
       '/projects/secure_auth_system/reset_password.php',
+      'projects/secure_auth_system/search_user.php',
     ];
 
   // Get the current URI

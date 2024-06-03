@@ -56,6 +56,7 @@
                 <a href="edit_profile.php" class="btn btn-secondary">Edit Profile</a>
                 <a href="action.php?logout=1" class="btn btn-primary">Logout</a>
                 <a href="action.php?delete_user=1" class="btn btn-danger">Delete User</a>
+                <a href="search_user.php" class="btn btn-info">Search Users</a>
             </div>
           </div>
         </div>
