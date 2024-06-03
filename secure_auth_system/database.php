@@ -93,7 +93,7 @@ class Database{
         $stmt->execute(['email' => $email]);
     }
     
-    public function searchUsers($term) {
+    public function searchUser($term) {
         $sql = "SELECT * FROM users WHERE name LIKE :term OR email LIKE :term";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['term' => '%' . $term . '%']);

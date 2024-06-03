@@ -11,7 +11,7 @@ $searchResults = [];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $searchTerm = Utils::sanitize($_POST['search']);
     $db = new Database();
-    $searchResults = $db->searchUsers($searchTerm);
+    $searchResults = $db->searchUser($searchTerm);
 }
 ?>
 

@@ -173,6 +173,6 @@ require_once 'database.php';
     } elseif (isset($_POST['update_profile'])) {
         $authSystem->updateUserProfile($_POST['name'], $_POST['email']);
     } elseif (isset($_GET['delete_user'])) {
-    $authSystem->deleteUser($_SESSION['user']['email']);
+        $authSystem->deleteUser($_SESSION['user']['email']);
 }
 ?>
