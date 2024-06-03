@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="mb-3 d-grid">
                             <button type="submit" class="btn btn-primary">Search</button>
                         </div>
+
                     </form>
                     <?php if ($_SERVER['REQUEST_METHOD'] == 'POST'): ?>
                         <?php if (count($searchResults) > 0): ?>
@@ -63,6 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="alert alert-warning">No users found.</div>
                         <?php endif; ?>
                     <?php endif; ?>
+                        <div class="text-center">
+                            <a href="profile.php" class="btn btn-secondary mt-2 ">Back to Profile</a>
+                        </div>
                 </div>
             </div>
         </div>
