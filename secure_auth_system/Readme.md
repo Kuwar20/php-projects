@@ -1,4 +1,4 @@
-# Secure Authentication System
+<h1 align="center">Secure Authentication System</h1>
 
 Secure Authentication System is a PHP-based web application that provides secure user authentication functionalities, including user registration, login, password reset, and profile management. It utilizes PHP sessions, PDO for database interactions, and password hashing for enhanced security.
 
