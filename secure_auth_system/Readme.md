@@ -31,6 +31,7 @@ Folder Structure
              │   ├── search_user.php     # User search page with pagination
              │   ├── utils.php           # Utility functions like sanitize, setFlash, redirect, etc.
              │   └── 404.php             # Custom 404 error page
+             │   └── .htaccess           # Apache configuration file for URL rewriting, access control, etc.
              |
              └── README.md               # Overall project documentation
 
